@@ -11,9 +11,14 @@
 <body>
     <div id="app">
         <h1>{{title}}</h1>
-        <p>{{content}}</p>
-        <p>{{calc * calc - calc / 100}}</p>
-        <p>{{bought ? 'Yes, he bought' : 'No :('}}</p>
+        <div v-if="bought" v-bind:style="{background: valueColor}">
+            <p>{{content}}</p>
+            <p>{{calc * calc - calc / 100}}</p>
+            <p>{{bought ? 'Sim' : 'Não'}}</p>
+            <input  v-model="valueColor" type="color">
+            {{valueColor}}
+        </div>
+        <a v-bind:href="bought ? href : ''">{{href}}</a>
     </div>
 
     <script>
@@ -23,7 +28,9 @@
                 title: 'Curso de VueJS',
                 content: 'Conteúdo do curso...',
                 calc: 5,
-                bought: false
+                bought: true,
+                href: "https://www.google.com",
+                valueColor: "#FFF"
             }
         });
     </script>
