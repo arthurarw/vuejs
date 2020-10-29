@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>LatestTime: {{acoes.latestTime}} </p>
+        <p>LatestPrice: {{acoes.latestPrice}}</p>
+        <p>CompanyName: {{acoes.companyName}}</p>
+        <button @click="getActions()">Pegar Ações</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                acoes: {},
+            },
+            methods: {
+                getActions() {
+                    fetch('https://cloud.iexapis.com/stable/stock/nvda/quote?token=TOKEN_HERE')
+                    .then(response => response.json())
+                    .then(json => {
+                        this.acoes = json;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
