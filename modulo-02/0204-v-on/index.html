@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="handleClick">Clique aqui</button>
+        {{count}}
+        <button @click="active = !active">Clique aqui</button>
+        {{active}}
+        <a @click.prevent="scrollSuave" href="#interno">Prevent</a>
+        <a @click.once="scrollSuave" href="#interno">Once</a>
+        <a @click.prevent.once="scrollSuave" href="#interno">Once</a>
+        <div @mousemove="handleMouse">Mouse X: {{mouse.x}}</div>
+        <input @keyup="handleKey" type="text" />
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+                active: true,
+                mouse: '',
+            },
+            methods: {
+                handleClick() {
+                    this.count++;
+                },
+                scrollSuave() {
+                    console.log('Scroll Suave');
+                },
+                handleKey(event) {
+                    console.log(event.key);
+                },
+                handleMouse(event) {
+                    this.mouse = event;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
