@@ -10,29 +10,14 @@
 
 <body>
     <div id="app">
-        <p>Banana {{stockBanana}}</p>
-        <p>Carrinho: {{cart}}</p>
-        <button v-show="stockBanana > 0" @click="addProduct">+</button>
-        <button v-show="cart" @click="removeProduct">-</button>
-        <p v-show="stockBanana == 0">Não temos mais banana em estoque</p>
+        <div v-once v-html="list"></div>
     </div>
 
     <script>
         const vm = new Vue({
             el: "#app",
             data: {
-                stockBanana: 7,
-                cart: 0
-            },
-            methods: {
-                addProduct() {
-                        this.cart++;
-                        this.stockBanana--;
-                },
-                removeProduct() {
-                    this.cart--;
-                    this.stockBanana++;
-                }
+                list: "<ul><li>Item1</li><li>Item2</li><li>Item3</li></ul>"
             }
         });
     </script>
