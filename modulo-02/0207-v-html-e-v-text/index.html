@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-html="link">{{link}}</div>
+        <p>{{fruit}}</p>
+        <p v-text="fruit">{{fruit}}</p>
+
+        <p v-once>Valor Inicial: R$ {{totalValue - expense}}</p>
+        <button @click="expense += 5">Comprar Banana R$5</button>
+        <p>Total Gasto: R$ {{expense}}</p>
+        <p>Valor Final: R$ {{totalValue - expense}}</p>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                link: "<a href='https://google.com'>Google</a>",
+                fruit: 'Maçã',
+                totalValue: 150,
+                expense: 20
+            }
+        });
+    </script>
+</body>
+
+</html>
