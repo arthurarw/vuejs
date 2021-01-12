@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in list">{{item}} {{index}}</li>
+        </ul>
+        <ul>
+            <li v-for="({population, name}, key, index) in states">Nome: {{name}} / População: {{population}}</li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                list: ['Banana', 'Uva', 'Laranja'],
+                states: {
+                    sp: {
+                        population: '45 milhões',
+                        name: 'São Paulo'
+                    },
+                    mg: {
+                        population: '21 milhões',
+                        name: 'Minas Gerais'
+                    },
+                    rj: {
+                        population: '17 milhões',
+                        name: 'Rio de Janeiro'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
